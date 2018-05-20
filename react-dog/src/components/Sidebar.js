@@ -6,48 +6,34 @@ import List, { ListItem, ListItemText } from 'material-ui/List';
 import TextField from 'material-ui/TextField';
 import Avatar from 'material-ui/Avatar';
 
-import titleInitials from '../utils/title-initials';
 import Button from 'material-ui/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import RestoreIcon from '@material-ui/icons/Restore';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import ExploreIcon from '@material-ui/icons/Explore';
+import ChatLists from './ChatLists';
+import CreateChatButton from './CreateChatButton';
 
 const styles = theme => ({
     drawerPaper: {
-        position: 'inherit',
         width: 320,
       },
     
-      toolbar: {...theme.mixins.toolbar,
+      toolbar: {
+        ...theme.mixins.toolbar,
         paddingRight: theme.spacing.unit * 3,
         paddingLeft: theme.spacing.unit * 3,
+      
       },
-      searchChat: {
-        marginTop: 16,
-        marginBottom: 8,
-        width: '100%',
-      },
-    
-      ListCaht: {
-        overflowY: 'scroll',
-      },
-    
-      AddButton: {
-        position: 'absolute',
-        left:239,
-        right:'auto' ,
-        bottom:72,
-      },
-    
+
       NavigationButton: {
-        flexGrow: 1,
+        position: 'fixed',
+        bottom: 0,
         width: 320,
         maxWidth: 320,
         backgroundColor: theme.palette.background.paper,
-        paddingTop:8,
-        paddingBottom: 10,
+
       },
     
 });
@@ -67,22 +53,13 @@ const Sidebar = ({classes, chats}) => (
             />
           </div>
         <Divider />
-            <List className={classes.ListCaht}>
-              {chats.map((chat, index)=> (
-                <ListItem key = {index} button>
-                  <Avatar>
-                    {titleInitials(chat.title)}
-                  </Avatar>
-                  <ListItemText primary={chat.title}/>
-                </ListItem> 
-              ))}
-            </List>
-        <Button variant="fab" color="primary" aria-label="add" className={classes.AddButton}>
-        <AddIcon />
-        </Button>
+
+        <ChatLists chats ={chats} />
+        <CreateChatButton />
+        
         <BottomNavigation showLabels className={classes.NavigationButton}>
-        <BottomNavigationAction label="My chats" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Explore" icon={<LocationOnIcon />} />
+            <BottomNavigationAction label="My Chats" icon={<RestoreIcon />} />
+            <BottomNavigationAction label="Explore" icon={<ExploreIcon />} />
         </BottomNavigation>
           
             
