@@ -11,8 +11,8 @@ const styles = theme =>({
         alignItems: 'center',
         paddingTop: '64px',
         height: `calc(100% - 111)`,
-        overflowY:  'hidden',
-        marginLeft: 320,   
+        marginLeft:320,
+        overflow:  'hidden',
     },
 });
 

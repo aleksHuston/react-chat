@@ -1,17 +1,31 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { withStyles } from 'material-ui/styles';
+import {BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import ChatPage from './ChatPage';
+import WellcomePage from './WellcomePage';
 
+const styles = theme => ({
+  root: {
+    position: 'relative',
+    display: 'flex',
+    width: '100%',
+    height: '100%',
+    backgroundColor: theme.palette.background.default,
+  },
+});
 
   
-const App = () => (
+const App = ({classes}) => (
   <Router>
-    <React.Fragment>
-      <Route path='/chat' component = {ChatPage} />
-    </React.Fragment>
+    <div className={classes.root}>
+      <Switch>
+        <Route path='/chat' component = {ChatPage} />
+        <Route path='/wellcome' component = {WellcomePage}/>
+      </Switch>
+    </div>
   </Router>
 );
 
-export default App;
+export default withStyles(styles)(App);
 
 

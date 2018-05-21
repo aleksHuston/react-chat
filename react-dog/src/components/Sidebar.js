@@ -2,13 +2,7 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
-import List, { ListItem, ListItemText } from 'material-ui/List';
 import TextField from 'material-ui/TextField';
-import Avatar from 'material-ui/Avatar';
-
-import Button from 'material-ui/Button';
-import AddIcon from '@material-ui/icons/Add';
-
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
@@ -16,8 +10,9 @@ import ChatLists from './ChatLists';
 import CreateChatButton from './CreateChatButton';
 
 const styles = theme => ({
-    drawerPaper: {
-        width: 320,
+    drawerPaper: {    
+      height: '100%',
+      width: 320,
       },
     
       toolbar: {
@@ -48,6 +43,7 @@ const Sidebar = ({classes, chats}) => (
          <div className={classes.toolbar}>
             <TextField
               fullWidth
+              position='fixed'
               margin="normal"
               placeholder="Search chats..."
             />

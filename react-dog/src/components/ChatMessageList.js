@@ -4,6 +4,7 @@ import ChatMessage from './ChatMessage'
 
 const styles = theme => ({
     dialog:{
+        overflowX: 'scroll',
         height: '100%',
         width: '100%',
         paddingTop: theme.spacing.unit * 3,
