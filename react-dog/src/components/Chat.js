@@ -10,9 +10,8 @@ const styles = theme =>({
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: '64px',
-        height: `calc(100% - 111)`,
-        marginLeft:320,
-        overflow:  'hidden',
+        height: '100%',
+        overflow: 'hidden',
     },
 });
 

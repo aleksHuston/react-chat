@@ -1,7 +1,6 @@
 import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import classnames from 'classnames';
-import titleInitials from '../utils/title-initials';
 import Typography from 'material-ui/Typography';
 import Avatar from './Avatar';
 import Paper from 'material-ui/Paper';

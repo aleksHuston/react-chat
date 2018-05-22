@@ -32,3 +32,9 @@ git init
 git status
 git add -A
 git status
+cd /home/react-dog/
+npm install redux react-redux redux-thunk
+cd /home/react-dog/
+npm start
+cd /home/react-dog/
+npm start

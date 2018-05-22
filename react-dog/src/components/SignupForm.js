@@ -2,7 +2,8 @@ import React from 'react';
 import { withStyles } from 'material-ui';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
-import Fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch'
+
 const styles = theme => ({
   signUpButton: {
     marginTop: theme.spacing.unit * 2,
@@ -23,7 +24,7 @@ class SignupForm extends React.Component {
       value: '',
       isValid: true,
     },
-  }
+  };
 
   validate = () => {
     const { password, repeatedPassword } = this.state;
@@ -35,7 +36,7 @@ class SignupForm extends React.Component {
     });
 
     return isValid;
-  }
+  };
 
   handleInputChange = (event) => {
     event.persist();
@@ -47,7 +48,7 @@ class SignupForm extends React.Component {
         value,
       },
     }));
-  }
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -58,23 +59,8 @@ class SignupForm extends React.Component {
 
     const { username, password } = this.state;
 
-    console.log('Sign up:', username.value, password.value);
-
-    fetch('http://localhost:3000/v1/signup', {
-      method: "POST",
-      body: JSON.stringify({
-        username: username.value,
-        password: password.value,
-      }),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(reason => console.error(reason));
-  }
+    this.props.onSubmit(username.value, password.value);
+  };
 
   render() {
     const { classes } = this.props;
