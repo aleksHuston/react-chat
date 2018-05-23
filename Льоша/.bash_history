@@ -42,3 +42,12 @@ cd /home/react-dog/
 npm start
 cd /home/react-dog/
 npm start
+cd /home/
+git branch
+git add -A
+git commit -m week{2}
+git push
+cd react-dog/
+npm install redux react-redux redux-thunk
+cd /home/react-dog/
+npm start

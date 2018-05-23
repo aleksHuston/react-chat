@@ -44,7 +44,7 @@ export function login(username, password) {
     return (dispatch) => {
         dispatch({
             type: LOGIN_REQUEST,
-        })
+        });
     return fetch('http://localhost:8000/v1/login', {
         method: "POST",
         body: JSON.stringify({

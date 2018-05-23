@@ -60,8 +60,8 @@ class WelcomePage extends React.Component {
                 </Tabs>
               </AppBar>
               <div className={classes.tabContent}>
-                {activeTab === 0 && <LoginForm inSubmit={login} />}
-                {activeTab === 1 && <SignupForm isSubmit={signup} />}
+                {activeTab === 0 && <LoginForm onSubmit={login} />}
+                {activeTab === 1 && <SignupForm onSubmit={signup} />}
               </div>
             </Paper>
           </Grid>
