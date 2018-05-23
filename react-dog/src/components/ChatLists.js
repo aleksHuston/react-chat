@@ -5,7 +5,8 @@ import ChatListsItem from './ChatListsItem.js';
 
 const styles = theme => ({
  ListCaht: {
-    height: '100%',
+    height: 'calc(100% - 56px)',
+    overflowY: 'scroll',
 
   
 },

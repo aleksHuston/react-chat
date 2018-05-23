@@ -6,12 +6,7 @@ import ChatHeader from './ChatHeader';
 import Chat from './Chat';
 
 const styles = theme => ({
-    root: {
 
-      height: '100%',
-      width: `calc (100% -320)`,
-      backgroundColor: theme.palette.background.paper,
-    },
   });
 
 const ChatPage = ({classes}) =>(

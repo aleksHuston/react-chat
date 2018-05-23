@@ -4,7 +4,6 @@ import Avatar from './Avatar';
 import { ListItem, ListItemText } from 'material-ui/List';
 
 const styles = theme => ({
-    
 });
 
 const ChatListsItem = ({chat, title}) => (
