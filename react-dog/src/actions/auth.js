@@ -9,34 +9,34 @@ export function signup(username, password) {
         dispatch({
             type: SIGNUP_REQUEST,
         });
-        return fetch('http://localhost:8000/v1/signup', {
-            method: "POST",
-            body: JSON.stringify({
-              username,
-              password,
-            }),
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            },
-          })
-            .then(response => response.json())
-            .then((json => {
-                if(json.success){
-                    return json;
-                }
-                throw new Error(json.message);
-            })
-            .then ( json => dispatch({
-                type: SIGNUP_SUCCESS,
-                payload: json,
-            })) 
+    return fetch('http://localhost:8000/v1/signup', {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            password,
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        })
+        .then(response => response.json())
+        .then(json => {
+            if(json.success){
+                return json;
+            }
+            throw new Error(json.message);
+        })
+        .then ( json => dispatch({
+            type: SIGNUP_SUCCESS,
+            payload: json,
+        })) 
 
-            .catch(reason => 
-                dispatch({
-                    type: SIGNUP_FAILURE,
-                    payload: reason,
-            }));    
+        .catch(reason => 
+            dispatch({
+                type: SIGNUP_FAILURE,
+                payload: reason,
+        }));    
     };
 }
 
@@ -45,26 +45,26 @@ export function login(username, password) {
         dispatch({
             type: LOGIN_REQUEST,
         })
-        return fetch('http://localhost:8000/v1/login', {
-            method: "POST",
-            body: JSON.stringify({
-              username,
-              password,
-            }),
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            },
-          })
-            .then(response => response.json())
-            .then(json => dispatch({
-                type: LOGIN_SUCCESS,
-                payload: json,
-            }))
-            .catch(reason => dispatch({
-                type: LOGIN_FAILURE,
-                payload: reason,
-            }));
+    return fetch('http://localhost:8000/v1/login', {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            password,
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        })
+        .then(response => response.json())
+        .then(json => dispatch({
+            type: LOGIN_SUCCESS,
+            payload: json,
+        }))
+        .catch(reason => dispatch({
+            type: LOGIN_FAILURE,
+            payload: reason,
+        }));
 
     };
 }

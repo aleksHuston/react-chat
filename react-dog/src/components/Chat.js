@@ -12,6 +12,7 @@ const styles = theme =>({
         paddingTop: '64px',
         height: '100%',
         overflow: 'hidden',
+        marginLeft: 320,  
     },
 });
 

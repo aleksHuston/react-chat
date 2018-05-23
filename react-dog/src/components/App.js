@@ -8,12 +8,7 @@ import configureStore from '../store';
 
 const styles = theme => ({
   root: {
-    position: 'relative',
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-    backgroundColor: theme.palette.background.default,
-  },
+     },
 });
 
 const store = configureStore();

@@ -38,3 +38,7 @@ cd /home/react-dog/
 npm start
 cd /home/react-dog/
 npm start
+cd /home/react-dog/
+npm start
+cd /home/react-dog/
+npm start

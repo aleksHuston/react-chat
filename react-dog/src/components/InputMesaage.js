@@ -5,16 +5,16 @@ import Paper from 'material-ui/Paper';
 
 const styles = theme => ({
     InputMessage:{
-        padding: theme.spacing.unit * 2,
+        padding: 16,
 
     },
     InputMessageBlock:{
         position: 'fixed',
-        left: 'auto',
-        right: 0,
         bottom: 0,
-        width: `calc(100% - 320px)`,
-        padding: theme.spacing.unit * 3,
+        right: 0,
+        left: 320,
+        padding:theme.spacing.unit * 3,
+        width: `calc(100% - 320)`,
     },
 });
 
