@@ -34,7 +34,7 @@ class WelcomePage extends React.Component {
     const { activeTab } = this.state;
 
     if (isAuthenticated) {
-      return (<Redirect to='/chat'/>);
+      return (<Redirect to='/chat' />);
     }
 
     return (
