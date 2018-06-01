@@ -67,17 +67,118 @@ export function setActiveChat(chatId) {
         .then(data => {
             if (!data) {
                  dispatch(redirect('/chat'));
-            return    dispatch({
+           
+            return dispatch({
                     type: types.UNSET_ACTIVE_CHAT,
                 });
             }
         dispatch({
             type: types.SET_ACTIVE_CHAT,
             payload: data,
-        })
-        })
-        dispatch({
-            type: types.SET_ACTIVE_CHAT
+        });
         });
     };
+}
+
+export function joinChat (chatId) {
+    return(dispatch, getState) => {
+        const {token} = getState().auth;
+
+        dispatch({
+            type: types.JOIN_CHAT_REQUEST,
+            payload: {chatId},
+        });
+
+        return callApi(`/chats/{chatId}/join`, token)
+            .then (({chat})=>{
+                dispatch({
+                    type: types.JOIN_CHAT_SUCCESS,
+                    payload: {chat},
+                });
+                dispatch(redirect(`/chats/${chat._id}`));
+                return chat;
+            })
+            .catch (reason => dispatch({
+                type:types.JOIN_CHAT_FAILURE,
+                payload: reason,
+            }));
+    };
+}
+export function createChat (title) {
+    return(dispatch, getState) => {
+        const {token} = getState().auth;
+        dispatch({
+            type:types.CREATE_CHAT_REQUEST,
+            payload:{title},
+        });
+        return callApi('/chats', token, {method: 'POST'}, {data: {title}})
+            .then (({chat})=>{
+                dispatch({
+                    type:types.CREATE_CHAT_SUCCESS,
+                    payload: {chat},
+                });
+
+                dispatch(redirect(`/chats${chat._id}`));
+                return chat;
+            })
+            .catch (reason => dispatch({
+                type:types.CREATE_CHAT_FAILURE,
+                payload: reason,
+            }));
+    };
+}
+export function leaveChat (chatId) {
+    return(dispatch,getState) => {
+        const { token } = getState().auth;
+
+        dispatch({
+          type: types.LEAVE_CHAT_REQUEST,
+          payload: { chatId }
+        });
+    
+        return callApi(`/chats/${chatId}/leave`, token)
+            .then(data => {dispatch({
+                type: types.LEAVE_CHAT_SUCCESS,
+                payload: data,
+                });
+
+                dispatch(redirect('/chat'));
+
+                dispatch({type: types.UNSET_ACTIVE_CHAT,});
+                return data;
+
+            })
+            .catch(reason => dispatch({
+                type: types.LEAVE_CHAT_FAILURE,
+                payload: reason,
+            }));
+    };
+}
+export function deleteChat (chatId) {
+    return (dispatch, getState) => {
+        const { token } = getState().auth;
+    
+        dispatch({
+          type: types.DELETE_CHAT_REQUEST,
+          payload: { chatId }
+        });
+    
+        return callApi(`/chats/${chatId}`, token, { method: 'DELETE' })
+            .then(data => {
+                dispatch({
+                    type: types.DELETE_CHAT_SUCCESS,
+                    payload: data,
+                });
+
+                dispatch(redirect('/chat'));
+
+                dispatch({type: types.UNSET_ACTIVE_CHAT,});
+                return data;
+
+            })
+            .catch(reason => dispatch({
+                type: types.DELETE_CHAT_FAILURE,
+                payload: reason,
+            }));
+      };
 }

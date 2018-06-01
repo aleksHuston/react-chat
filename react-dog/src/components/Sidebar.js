@@ -11,25 +11,25 @@ import CreateChatButton from './CreateChatButton';
 
 const styles = theme => ({
     drawerPaper: {    
-      height: '100%',
-      width: 320,
-      },
+        height: '100%',
+        width: 320,
+    },
     
-      toolbar: {
+    toolbar: {
         ...theme.mixins.toolbar,
         paddingRight: theme.spacing.unit * 3,
         paddingLeft: theme.spacing.unit * 3,
       
-      },
+    },
 
-      NavigationButton: {
+    NavigationButton: {
         position: 'fixed',
         bottom: 0,
         width: 320,
         maxWidth: 320,
         backgroundColor: theme.palette.background.paper,
 
-      },
+    },
     
 });
 

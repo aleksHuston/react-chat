@@ -11,8 +11,7 @@ export default function configureStore() {
                 thunkMiddleware 
             )
         )
-    } 
-    else {
+    } else {
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ({serialize: true}) : compose;
     
