@@ -13,15 +13,20 @@ const styles = theme => ({
         width: `calc(100% - 320px)`,
         marginBottom: 0,
       },
-     
+    appBarTitle: {
+        flex: 1,
+        marginLeft: theme.spacing.unit * 2,
+        marginRight: theme.spacing.unit * 2,
+        color: theme.palette.secondary.contrastText,
+    },
 });
 
 class ChatHeader extends React.Component {
     render () {
         const {classes, activeUser, logout, activeChat, editUser, leaveChat, deleteChat} = this.props;
         return (
-            <AppBar className={classes.appBar}>
-                <Toolbar>
+            <AppBar  color="primary" className={classes.appBar}>
+                <Toolbar color="contrast">
                 {activeChat ? (
                     <React.Fragment>
                     <Avatar colorFrom={activeChat._id}>

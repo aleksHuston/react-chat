@@ -13,7 +13,7 @@ const activeId  = (state = initialState.activeId, action) => {
     switch (action.type) {
         case types.SET_ACTIVE_CHAT:
         case types.JOIN_CHAT_SUCCESS:
-            return action.payload.chat._id;
+            return getChatId(action.payload.chat);
         case types.UNSET_ACTIVE_CHAT:
         case types.DELETE_CHAT_SUCCESS:
             return null;

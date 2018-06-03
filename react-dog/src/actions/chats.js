@@ -144,7 +144,7 @@ export function leaveChat (chatId) {
 
                 dispatch(redirect('/chat'));
 
-                dispatch({type: types.UNSET_ACTIVE_CHAT,});
+                dispatch({type: types.UNSET_ACTIVE_CHAT});
                 return data;
 
             })

@@ -5,11 +5,12 @@ import Typography from 'material-ui/Typography';
 import ChatListsItem from './ChatListsItem.js';
 
 const styles = theme => ({
- ListCaht: {
+ListCaht: {
     height: 'calc(100% - 56px)',
-    overflowY: 'scroll',
-
-  
+    overflowY: 'scroll', 
+},
+noChats: {
+    textAlign: 'center',
 },
 });
 
@@ -21,8 +22,7 @@ const ChatLists = ({classes, chats, activeChat}) => (
                 key={chat._id}
                 active={activeChat && activeChat._id === chat._id}
                 chatId={chat._id}
-                {...chat}
-            />
+                {...chat} />
         ))
         ) : (
         <Typography variant="subheading" className={classes.noChats}>
