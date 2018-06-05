@@ -11,56 +11,95 @@ import CreateChatButton from './CreateChatButton';
 
 const styles = theme => ({
     drawerPaper: {    
-      height: '100%',
-      width: 320,
-      },
-    
-      toolbar: {
+        height: '100%',
+        width: 320,
+    },
+    toolbar: {
         ...theme.mixins.toolbar,
         paddingRight: theme.spacing.unit * 3,
         paddingLeft: theme.spacing.unit * 3,
       
-      },
-
-      NavigationButton: {
+    },
+    NavigationButton: {
         position: 'fixed',
         bottom: 0,
         width: 320,
         maxWidth: 320,
         backgroundColor: theme.palette.background.paper,
 
-      },
-    
+    },
 });
 
-const Sidebar = ({classes, chats}) => (
-    <Drawer
-        variant="permanent"
-        classes={{
-        paper: classes.drawerPaper,
-        }}>
+class Sidebar extends React.Component {
+    state = {
+        searchValue: '',
+        activeTab: 0,
+    };
 
-         <div className={classes.toolbar}>
-            <TextField
-              fullWidth
-              position='fixed'
-              margin="normal"
-              placeholder="Search chats..."
-            />
-          </div>
-        <Divider />
+    handleSearchChange = (event) => {
+    this.setState({
+        searchValue: event.target.value,
+    });
+    };
 
-        <ChatLists chats ={chats} />
-        <CreateChatButton />
+    handleTabChange = (event, value) => {
+    this.setState({
+        activeTab: value,
+    })
+    };
+
+    filterChats = (chats) => {
+    const { searchValue } = this.state;
+
+    return chats
+        .filter(chat => chat.title
+        .toLowerCase()
+        .includes(searchValue.toLowerCase())
+        )
+        .sort((one, two) =>
+        one.title.toLowerCase() <= two.title.toLowerCase() ? -1 : 1
+        );
+    };
+
+    render() {
+        const { classes, chats, createChat } = this.props;
+        const { activeTab, searchValue } = this.state;
         
-        <BottomNavigation showLabels className={classes.NavigationButton}>
-            <BottomNavigationAction label="My Chats" icon={<RestoreIcon />} />
-            <BottomNavigationAction label="Explore" icon={<ExploreIcon />} />
-        </BottomNavigation>
-          
-            
+        return (
+            <Drawer
+                variant="permanent"
+                classes={{
+                paper: classes.drawerPaper,
+                }}>
 
-    </Drawer>    
-);
+                <div className={classes.toolbar}>
+                    <TextField
+                    fullWidth
+                    position='fixed'
+                    margin="normal"
+                    placeholder="Search chats..."
+                    value = {searchValue} />
+                </div>
 
+                <Divider />
+
+                <ChatLists 
+                    chats ={this.filterChats(activeTab === 0 ? chats.my : chats.all)}
+                    activeChat={chats.active} />
+
+                <CreateChatButton OnClick = {createChat} />
+
+                <BottomNavigation 
+                    showLabels 
+                    className={classes.NavigationButton}
+                    value = {activeTab}
+                    onChange={this.handleTabChange} >
+                    <BottomNavigationAction label="My Chats" icon={<RestoreIcon />} />
+                    <BottomNavigationAction label="Explore" icon={<ExploreIcon />} />
+                </BottomNavigation>
+
+            </Drawer>    
+        );
+    }
+}
 export default withStyles(styles)(Sidebar);

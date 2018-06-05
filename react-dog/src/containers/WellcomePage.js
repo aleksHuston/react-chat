@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';   
 import WellcomePage from '../components/WellcomePage';
-import {signup, login} from '../actions';
+import {signup, login, recieveAuth} from '../actions';
 
 
 
@@ -13,6 +13,7 @@ const mapDispatchToProps = dispatch =>
 bindActionCreators ({
     signup,
     login,
+    recieveAuth,
 }, dispatch, );
 
 

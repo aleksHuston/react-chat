@@ -16,9 +16,12 @@ const styles = theme =>({
     },
 });
 
-const Chat = ({classes, messages}) => (
+const Chat = ({classes, messages, activeUser}) => (
     <main className={classes.windowChat}>
-        <ChatMessageList messages = {messages}/>
+        <ChatMessageList 
+            messages = {messages}
+            activeUser={activeUser}
+        />
         <InputMessage />
     </main>        
 );
