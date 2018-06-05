@@ -87,7 +87,7 @@ class Sidebar extends React.Component {
                     chats ={this.filterChats(activeTab === 0 ? chats.my : chats.all)}
                     activeChat={chats.active} />
 
-                <CreateChatButton OnClick={createChat} />
+                <CreateChatButton OnClick = {createChat} />
 
                 <BottomNavigation 
                     showLabels 

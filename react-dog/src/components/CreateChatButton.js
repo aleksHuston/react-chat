@@ -7,7 +7,6 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 
-
 const styles = theme => ({
     AddButton: {
         position: 'fixed',
@@ -63,8 +62,8 @@ class CreateChatButton extends React.Component {
 
             return;
         }
-
-        this.props.onClick(title.value);
+        console.log (this.props);
+        this.props.onClick(title.value);       
         this.toggleModal();
         this.setState({
             title: {
