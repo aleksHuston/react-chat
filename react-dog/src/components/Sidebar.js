@@ -8,6 +8,7 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
 import ChatLists from './ChatLists';
 import CreateChatButton from './CreateChatButton';
+import { isConnected } from '../reducers/services';
 
 const styles = theme => ({
     drawerPaper: {    
@@ -37,59 +38,64 @@ class Sidebar extends React.Component {
     };
 
     handleSearchChange = (event) => {
-    this.setState({
-        searchValue: event.target.value,
-    });
+        this.setState({
+            searchValue: event.target.value,
+        });
     };
 
     handleTabChange = (event, value) => {
-    this.setState({
-        activeTab: value,
-    })
+        this.setState({
+            activeTab: value,
+        })
     };
 
     filterChats = (chats) => {
-    const { searchValue } = this.state;
+        const { searchValue } = this.state;
 
-    return chats
-        .filter(chat => chat.title
-        .toLowerCase()
-        .includes(searchValue.toLowerCase())
-        )
-        .sort((one, two) =>
-        one.title.toLowerCase() <= two.title.toLowerCase() ? -1 : 1
-        );
+        return chats
+            .filter(chat => chat.title
+                .toLowerCase()
+                .includes(searchValue.toLowerCase())
+            )
+            .sort((one, two) =>
+                one.title.toLowerCase() <= two.title.toLowerCase() ? -1 : 1
+            );
     };
 
     render() {
-        const { classes, chats, createChat } = this.props;
+        const { classes, chats, createChat, isConnected } = this.props;
         const { activeTab, searchValue } = this.state;
         
         return (
             <Drawer
                 variant="permanent"
                 classes={{
-                paper: classes.drawerPaper,
+                    paper: classes.drawerPaper,
                 }}>
 
                 <div className={classes.toolbar}>
                     <TextField
-                    fullWidth
-                    position='fixed'
-                    margin="normal"
-                    placeholder="Search chats..."
-                    value = {searchValue} />
+                        fullWidth
+                        position='fixed'
+                        margin="normal"
+                        placeholder="Search chats..."
+                        value = {searchValue}
+                        onChange={this.handleSearchChange} />
                 </div>
 
                 <Divider />
 
                 <ChatLists 
+                    disabled = {!isConnected}
                     chats ={this.filterChats(activeTab === 0 ? chats.my : chats.all)}
                     activeChat={chats.active} />
 
-                <CreateChatButton OnClick = {createChat} />
+                <CreateChatButton 
+                    disabled = {!isConnected}
+                    onClick = {createChat} />
 
                 <BottomNavigation 
+                    disabled = {!isConnected}
                     showLabels 
                     className={classes.NavigationButton}
                     value = {activeTab}

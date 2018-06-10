@@ -18,9 +18,9 @@ const App = ({classes}) => (
   <Provider store={store}>
     <Router history = {history}>
         <Switch>
-          <PrivateRoute path='/chat' component = {ChatPage} />
-          <Route path='/(wellcome)?' component = {WellcomePage}/>
-          <Redirect path='/' />
+          <PrivateRoute path="/chat/:chatId?" component={ChatPage} />
+            <Route path='/(wellcome)?' component = {WellcomePage}/>
+            <Redirect to ='/' />
         </Switch>
     </Router>
   </Provider>

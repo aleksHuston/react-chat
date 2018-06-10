@@ -87,7 +87,7 @@ handleLogoutClick = () => {
                 aria-haspopup="true"
                 disabled={disabled}
                 onClick={this.handleClick} >
-                <AccountCircle />
+                    <AccountCircle />
                 </IconButton>
                 <Menu
                 id="simple-menu"

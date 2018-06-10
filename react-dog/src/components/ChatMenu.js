@@ -43,7 +43,7 @@ render() {
                 aria-haspopup="true"
                 disabled={disabled}
                 onClick={this.handleClick} >
-            <MoreVertIcon />
+                <MoreVertIcon />
             </IconButton>
             <Menu
                 id="simple-menu"

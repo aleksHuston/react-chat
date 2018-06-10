@@ -9,6 +9,7 @@ import Paper from 'material-ui/Paper';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import ErroMessage from './ErrorMessage';
 
 const styles = theme => ({
   paper: {
@@ -25,12 +26,16 @@ class WelcomePage extends React.Component {
     activeTab: 0,
   }
 
+  componentDidMount() {
+    this.props.recieveAuth();
+  }
+
   handleTabChage = (event, value) => {
     this.setState({ activeTab: value });
   }
 
   render() {
-    const { classes, signup, login, isAuthenticated } = this.props;
+    const { classes, signup, login, isAuthenticated, error } = this.props;
     const { activeTab } = this.state;
 
     if (isAuthenticated) {
@@ -42,7 +47,7 @@ class WelcomePage extends React.Component {
         <AppBar>
           <Toolbar>
             <Typography variant="title" color="inherit" style={{ flex: 1 }}>
-              DogeCodes React Chat
+              My first React Chat
             </Typography>
           </Toolbar>
         </AppBar>
@@ -66,6 +71,7 @@ class WelcomePage extends React.Component {
             </Paper>
           </Grid>
         </Grid>
+        <ErroMessage error = {error}/>
       </React.Fragment>
     );
   }

@@ -62,8 +62,7 @@ class CreateChatButton extends React.Component {
 
             return;
         }
-        console.log (this.props);
-        this.props.onClick(title.value);       
+        this.props.onClick(title.value);   
         this.toggleModal();
         this.setState({
             title: {
@@ -72,8 +71,8 @@ class CreateChatButton extends React.Component {
             },
         });
     }
-    render () {
-        const { classes } = this.props;
+    render () { 
+        const { classes, disabled} = this.props;
         const { open, title } = this.state;
 
         return (  
@@ -83,7 +82,8 @@ class CreateChatButton extends React.Component {
                     color="primary" 
                     aria-label="add"
                     className={classes.AddButton} 
-                    onClick={this.toggleModal} >
+                    onClick={this.toggleModal} 
+                    disabled = {disabled} >
                     <AddIcon />
                 </Button>
                 <Modal

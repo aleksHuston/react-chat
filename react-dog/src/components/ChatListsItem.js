@@ -19,9 +19,10 @@ const ChatListsItem =  ({ classes, disabled, title, chatId, active, createdAt })
       component={Link}
       to={`/chat/${chatId}`}
       className={active ? classes.activeItem : ''}
-      disabled={disabled}
-    >
+      disabled={disabled} >
+
       <Avatar colorFrom={chatId}>{title}</Avatar>
+      
       <ListItemText primary={title} secondary={moment(createdAt).fromNow()}/>
     </ListItem>
   );
