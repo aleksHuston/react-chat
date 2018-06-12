@@ -44,7 +44,7 @@ class InputMessage extends React.Component {
         
         return (
             <div className={classes.InputMessageBlock}> 
-                <Paper className={classes.InputMessage}>
+                <Paper className={classes.InputMessage} elevation={6}>
                     {showJoinButton ? (
                         <Button
                             disabled = {disabled}

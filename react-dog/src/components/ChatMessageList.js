@@ -55,9 +55,9 @@ class ChatMessageList extends React.Component {
     
         return messages && messages.length ? (
             <div className={classes.dialog} ref="dialog">
-            {messages.map((message, index) => (
+            {messages.map(message => (
                 <ChatMessage
-                    key={index}
+                    key={message._id}
                     activeUser={activeUser}
                     {...message} />
             ))}
